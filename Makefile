@@ -14,8 +14,8 @@ all:
 
 
 #Juntando todos os objetos e gerando o programa
-$(EXECUTAVEL): $(PATHTEMP)/Menu.o $(PATHTEMP)/Instancia.o $(PATHTEMP)/Solucao.o $(PATHTEMP)/Avaliador.o $(PATHTEMP)/HeuristicasConstrutivas.o $(PATHTEMP)/main.o
-	$(CPP) $(CCFLAGS) $(PATHTEMP)/Menu.o $(PATHTEMP)/Instancia.o $(PATHTEMP)/Solucao.o $(PATHTEMP)/Avaliador.o $(PATHTEMP)/HeuristicasConstrutivas.o $(PATHTEMP)/main.o $(CCLNFLAGS) $(LSFLAGS) -o $(PATHEXEC)/$(EXECUTAVEL)
+$(EXECUTAVEL): $(PATHTEMP)/Menu.o $(PATHTEMP)/Instancia.o $(PATHTEMP)/Solucao.o $(PATHTEMP)/Avaliador.o $(PATHTEMP)/HeuristicasConstrutivas.o $(PATHTEMP)/BuscasLocais.o $(PATHTEMP)/main.o
+	$(CPP) $(CCFLAGS) $(PATHTEMP)/Menu.o $(PATHTEMP)/Instancia.o $(PATHTEMP)/Solucao.o $(PATHTEMP)/Avaliador.o $(PATHTEMP)/HeuristicasConstrutivas.o $(PATHTEMP)/BuscasLocais.o $(PATHTEMP)/main.o $(CCLNFLAGS) $(LSFLAGS) -o $(PATHEXEC)/$(EXECUTAVEL)
 
 
 $(PATHTEMP)/main.o: $(PATHSRC)/main.cpp
@@ -35,6 +35,10 @@ $(PATHTEMP)/Menu.o: $(PATHSRC)/Menu.cpp
 
 $(PATHTEMP)/HeuristicasConstrutivas.o: $(PATHSRC)/HeuristicasConstrutivas.cpp
 	$(CPP) $(CCFLAGS) -c $(PATHSRC)/HeuristicasConstrutivas.cpp -o $(PATHTEMP)/HeuristicasConstrutivas.o
+
+$(PATHTEMP)/BuscasLocais.o: $(PATHSRC)/BuscasLocais.cpp
+	$(CPP) $(CCFLAGS) -c $(PATHSRC)/BuscasLocais.cpp -o $(PATHTEMP)/BuscasLocais.o
+
 
 ####################################################
 ###################### CLEAN #######################
