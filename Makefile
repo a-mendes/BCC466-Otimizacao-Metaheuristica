@@ -4,7 +4,7 @@ PATHTEMP = ./.temp
 PATHSRC = ./src
 
 all: main.o Avaliador.o BuscasLocais.o HeuristicasConstrutivas.o Instancia.o Menu.o Solucao.o
-	@g++ $(PATHTEMP)/main.o $(PATHTEMP)/Avaliador.o $(PATHTEMP)/BuscasLocais.o $(PATHTEMP)/HeuristicasConstrutivas.o  $(PATHTEMP)/Instancia.o $(PATHTEMP)/Menu.o $(PATHTEMP)/Solucao.o -o ./bin/tsp.exe
+	@g++ $(PATHTEMP)/main.o $(PATHTEMP)/Avaliador.o $(PATHTEMP)/BuscasLocais.o $(PATHTEMP)/HeuristicasConstrutivas.o  $(PATHTEMP)/Instancia.o $(PATHTEMP)/Menu.o $(PATHTEMP)/Solucao.o -o ./tsp.exe
 
 main.o: $(PATHSRC)/main.cpp
 	@g++ -c $(PATHSRC)/main.cpp -o $(PATHTEMP)/main.o
@@ -28,7 +28,7 @@ Solucao.o: $(PATHSRC)/Solucao.cpp
 	@g++ -c $(PATHSRC)/Solucao.cpp -o $(PATHTEMP)/Solucao.o	
 
 run:
-	@./tsp.exe
+	@./tsp.exe ./instancias/C50.TXT
 
 go:
 	@cls

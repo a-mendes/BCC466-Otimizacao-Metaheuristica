@@ -4,6 +4,7 @@
 #include <set>
 #include <algorithm>
 #include <random>
+#include <cfloat>
 
 #include "Instancia.h"
 #include "Solucao.h"

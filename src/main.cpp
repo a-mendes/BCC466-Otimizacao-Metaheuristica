@@ -4,6 +4,7 @@
 #include <vector>
 #include <string>
 #include <cmath>
+#include <locale.h>
 #include "Instancia.h"
 #include "Solucao.h"
 #include "Avaliador.h"
@@ -16,10 +17,12 @@ using namespace std;
 
 int main(int argc, char* argv[])
 {
+    setlocale(LC_ALL, "portuguese");
+
     Instancia inst;
     Solucao sol;
     float fo; 
-    string nomeArq = argv[1];
+    char* nomeArq = argv[1];
 
     int op, hc, bl;
     do
@@ -29,18 +32,14 @@ int main(int argc, char* argv[])
         {
             case 1:
             { 
-                leInstancia(inst, nomeArq);
-                printf("\n\n Arquivo carregado com sucesso!\n\n");
-                /*
-                sol.push_back(0);
-                sol.push_back(2);
-                sol.push_back(1);
-                sol.push_back(3);
+                bool sucesso = leInstancia(inst, nomeArq);
 
-                float fo = avalia(inst, sol);
+                if(sucesso)
+                    printf("\nArquivo carregado com sucesso!\n");
+                else
+                    printf("\nFalha ao carregar arquivo '%s'\n", nomeArq);
 
-                cout<< "Valor da FO: " << fo << endl;
-                */
+                
             }    
             break;
             case 2: 

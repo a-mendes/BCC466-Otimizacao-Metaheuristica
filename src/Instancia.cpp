@@ -12,7 +12,7 @@ void calculaDistancias(Instancia& inst)
 
 }
 
-void leInstancia(Instancia& inst, string nome_arq)
+bool leInstancia(Instancia& inst, string nome_arq)
 {
     ifstream arq(nome_arq);
     if(arq.is_open())
@@ -38,5 +38,9 @@ void leInstancia(Instancia& inst, string nome_arq)
 
         //calculando a matriz
         calculaDistancias(inst);
+
+        return true;
     }
+
+    return false;
 }

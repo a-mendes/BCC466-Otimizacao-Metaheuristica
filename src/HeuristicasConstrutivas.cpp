@@ -3,7 +3,7 @@
 int melhorCandidato(Instancia& inst, set<int>& C, int idUltimo)
 {
     int idMelhor;
-    float custoMelhor = MAXFLOAT;
+    float custoMelhor = FLT_MAX;
     set<int>::iterator it;
     for(it = C.begin(); it != C.end(); it++)
     {
@@ -41,7 +41,7 @@ Solucao VizinhoMaisProximo(Instancia& inst)
 
 float melhorCandidatoIMB(Instancia& inst, set<int>& C,Solucao& sol,int& id,int& pos)
 {
-    float custoMelhor = MAXFLOAT, custo;   
+    float custoMelhor = FLT_MAX, custo;   
     for(int i = 0; i < sol.size(); i++)
     {   int proxCidade = i+1;
         if(i+1 == sol.size())//ultima posição

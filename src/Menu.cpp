@@ -5,9 +5,11 @@
 */
 #include "Menu.h"
 
+
 int menuPrincipal()
 {
     int op;
+    printf("\n");
     printf("=====================================\n");
     printf("===   BCC466 - Metaheurísticas    ===\n");
     printf("=== Problema do Caixeiro Viajante ===\n");
@@ -28,6 +30,7 @@ int menuPrincipal()
 int menuHeuristicaConstrutiva()
 {
     int hc;
+    printf("\n");
     printf("---- Heurísticas Construtivas ---\n");
     printf("Selecione uma opção:\n");
     printf("1 - Vizinho Mais Próximo.\n");
@@ -49,6 +52,7 @@ int menuHeuristicaConstrutiva()
 int menuBuscaLocal()
 {
     int bl;
+    printf("\n");
     printf("---- Buscas Locais ---\n");
     printf("Selecione uma opção:\n");
     printf("1 - Descida Troca (BI).\n");
@@ -63,6 +67,4 @@ int menuBuscaLocal()
     } while ( (bl < 1) || (bl > 5) );
 
     return bl;
-    
-    
 }
