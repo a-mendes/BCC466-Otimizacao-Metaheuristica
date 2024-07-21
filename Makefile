@@ -1,63 +1,42 @@
-####################################################
-###################### MAKE ########################
-####################################################
+#Windows Makefile
 
-EXECUTAVEL = tsp
-PATHEXEC = ./bin
-PATHSRC= ./src
 PATHTEMP = ./.temp
+PATHSRC = ./src
 
-all:
-	mkdir -p $(PATHEXEC)
-	mkdir -p $(PATHTEMP)
-	make $(EXECUTAVEL)	
+all: main.o Avaliador.o BuscasLocais.o HeuristicasConstrutivas.o Instancia.o Menu.o Solucao.o
+	@g++ $(PATHTEMP)/main.o $(PATHTEMP)/Avaliador.o $(PATHTEMP)/BuscasLocais.o $(PATHTEMP)/HeuristicasConstrutivas.o  $(PATHTEMP)/Instancia.o $(PATHTEMP)/Menu.o $(PATHTEMP)/Solucao.o -o ./bin/tsp.exe
 
+main.o: $(PATHSRC)/main.cpp
+	@g++ -c $(PATHSRC)/main.cpp -o $(PATHTEMP)/main.o
 
-#Juntando todos os objetos e gerando o programa
-$(EXECUTAVEL): $(PATHTEMP)/Menu.o $(PATHTEMP)/Instancia.o $(PATHTEMP)/Solucao.o $(PATHTEMP)/Avaliador.o $(PATHTEMP)/HeuristicasConstrutivas.o $(PATHTEMP)/BuscasLocais.o $(PATHTEMP)/main.o
-	$(CPP) $(CCFLAGS) $(PATHTEMP)/Menu.o $(PATHTEMP)/Instancia.o $(PATHTEMP)/Solucao.o $(PATHTEMP)/Avaliador.o $(PATHTEMP)/HeuristicasConstrutivas.o $(PATHTEMP)/BuscasLocais.o $(PATHTEMP)/main.o $(CCLNFLAGS) $(LSFLAGS) -o $(PATHEXEC)/$(EXECUTAVEL)
+Avaliador.o: $(PATHSRC)/Avaliador.cpp
+	@g++ -c $(PATHSRC)/Avaliador.cpp -o $(PATHTEMP)/Avaliador.o
 
+BuscasLocais.o: $(PATHSRC)/BuscasLocais.cpp
+	@g++ -c $(PATHSRC)/BuscasLocais.cpp -o $(PATHTEMP)/BuscasLocais.o
 
-$(PATHTEMP)/main.o: $(PATHSRC)/main.cpp
-	$(CPP) $(CCFLAGS) -c $(PATHSRC)/main.cpp -o $(PATHTEMP)/main.o
+HeuristicasConstrutivas.o: $(PATHSRC)/HeuristicasConstrutivas.cpp
+	@g++ -c $(PATHSRC)/HeuristicasConstrutivas.cpp -o $(PATHTEMP)/HeuristicasConstrutivas.o
 
-$(PATHTEMP)/Instancia.o: $(PATHSRC)/Instancia.cpp
-	$(CPP) $(CCFLAGS) -c $(PATHSRC)/Instancia.cpp -o $(PATHTEMP)/Instancia.o
+Instancia.o: $(PATHSRC)/Instancia.cpp
+	@g++ -c $(PATHSRC)/Instancia.cpp -o $(PATHTEMP)/Instancia.o	
 
-$(PATHTEMP)/Solucao.o: $(PATHSRC)/Solucao.cpp
-	$(CPP) $(CCFLAGS) -c $(PATHSRC)/Solucao.cpp -o $(PATHTEMP)/Solucao.o
+Menu.o: $(PATHSRC)/Menu.cpp
+	@g++ -c $(PATHSRC)/Menu.cpp -o $(PATHTEMP)/Menu.o	
 
-$(PATHTEMP)/Avaliador.o: $(PATHSRC)/Avaliador.cpp
-	$(CPP) $(CCFLAGS) -c $(PATHSRC)/Avaliador.cpp -o $(PATHTEMP)/Avaliador.o
+Solucao.o: $(PATHSRC)/Solucao.cpp
+	@g++ -c $(PATHSRC)/Solucao.cpp -o $(PATHTEMP)/Solucao.o	
 
-$(PATHTEMP)/Menu.o: $(PATHSRC)/Menu.cpp
-	$(CPP) $(CCFLAGS) -c $(PATHSRC)/Menu.cpp -o $(PATHTEMP)/Menu.o
+run:
+	@./tsp.exe
 
-$(PATHTEMP)/HeuristicasConstrutivas.o: $(PATHSRC)/HeuristicasConstrutivas.cpp
-	$(CPP) $(CCFLAGS) -c $(PATHSRC)/HeuristicasConstrutivas.cpp -o $(PATHTEMP)/HeuristicasConstrutivas.o
-
-$(PATHTEMP)/BuscasLocais.o: $(PATHSRC)/BuscasLocais.cpp
-	$(CPP) $(CCFLAGS) -c $(PATHSRC)/BuscasLocais.cpp -o $(PATHTEMP)/BuscasLocais.o
-
-
-####################################################
-###################### CLEAN #######################
-####################################################
+go:
+	@cls
+	@make all
+	@make run
 
 clean:
-	/bin/rm -rf $(PATHEXEC)
-	/bin/rm -rf $(PATHTEMP)
-
-####################################################
-##################### COMPILER #####################
-####################################################
-
-##### COMPILER CONFIGURATION's
-# Compiler
-CPP = g++
-# Compilation parameters
-CCOPT = -O3
-## Include libraries identifiers
-CCLNFLAGS = -lm
-# Header's include path
-CCFLAGS = $(CCOPT)
+	@del *.exe /q
+	@cd .temp && del *.o /q && \
+	@cd bin && del *.exe /q && \
+	@cls
