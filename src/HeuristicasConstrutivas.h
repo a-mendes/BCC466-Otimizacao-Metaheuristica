@@ -12,7 +12,7 @@
 using namespace std;
 
 //retorno o ID do candidato com melhor avaliacao
-int melhorCandidato(Instancia& inst, set<int>& C, int idUltimo);
+int melhorCandidatoVMP(Instancia& inst, set<int>& C, int idUltimo);
 Solucao VizinhoMaisProximo(Instancia& inst);
 
 //retorna o melhor custo, além de atualizar as variaveis id e pos com os melhores valores
@@ -21,5 +21,10 @@ Solucao InsercaoMaisBarata(Instancia& inst);
 
 //construção randômica
 Solucao Randomica(Instancia& inst);
+
+Solucao VMP_ParcialmenteGuloso(Instancia& inst);
+
+Solucao IMB_ParcialmenteGuloso(Instancia& inst);
+
 
 #endif /*HEURISTICASCONSTRUTIVAS_H*/
