@@ -66,14 +66,14 @@ int main(int argc, char *argv[])
                 break;
             case 4:
                 cout << " ---- VMP Parcialmente Guloso ---- " << endl;
-                sol = VMP_ParcialmenteGuloso(inst);
+                sol = VizinhoMaisProximoParcialmenteGuloso(inst, 5);
                 impSol(sol);
                 fo = avalia(inst, sol);
                 printf("\nFO: %.2f\n", fo);
                 break;
             case 5:
                 cout << " ---- IMB Parcialmente Guloso ---- " << endl;
-                sol = IMB_ParcialmenteGuloso(inst);
+                sol = InsercaoMaisBarataParcialmenteGuloso(inst, 5);
                 impSol(sol);
                 fo = avalia(inst, sol);
                 printf("\nFO: %.2f\n", fo);

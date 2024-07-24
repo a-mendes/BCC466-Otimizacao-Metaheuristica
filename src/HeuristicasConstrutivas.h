@@ -4,7 +4,8 @@
 #include <set>
 #include <algorithm>
 #include <random>
-#include <utility> //pair
+#include <utility>
+#include <float.h>
 
 #include "Instancia.h"
 #include "Solucao.h"
